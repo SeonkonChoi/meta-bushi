@@ -15,7 +15,7 @@ mkdir downloads
 mkdir build
 bash
 cd poky
-source ../meta-bushi/bb-env ../build
+source ../meta-bushi/conf/bb-env ../build
 ln -s ../downloads ./
 bitbake xen-image-minimal
 ```
@@ -27,10 +27,8 @@ sudo sh ../meta-bushi/scripts/mkefidisk.sh \
     tmp/deploy/images/intel-corei7-64/xen-image-minimal-intel-corei7-64.hddimg 
     /dev/sda
 ```
-/dev/sdX : The USB stick device to be written on your host desktop.
-/dev/sda : Whatever a **major device node for rootfs** something like /dev/sda or /dev/mmcblk0 on your target machine.
+**/dev/sdX** : The USB stick device to be written on your host desktop.
+**/dev/sda** : Whatever a **major device node for rootfs** something like /dev/sda or /dev/mmcblk0 on your target machine.
 
 * Note
-It only assume EFI environment.
-It only assume x86_64.
-'xen.efi' is the first EFI app by default.
+It only assume EFI environment and x86_64, and the 'xen.efi' would be the first EFI app by default.

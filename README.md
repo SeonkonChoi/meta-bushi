@@ -27,10 +27,10 @@ sudo sh ../meta-bushi/scripts/mkefidisk.sh \
     tmp/deploy/images/intel-corei7-64/xen-image-minimal-intel-corei7-64.hddimg 
     /dev/sda
 ```
-..1. /dev/sdX : The USB stick device to be written on your host desktop.
-..2. /dev/sda : Whatever a **major device node for rootfs** something like /dev/mmcblk0 on your target machine.
+/dev/sdX : The USB stick device to be written on your host desktop.
+/dev/sda : Whatever a **major device node for rootfs** something like /dev/sda or /dev/mmcblk0 on your target machine.
 
 * Note
-..1. It only assume that EFI environment.
-..2. It only assume that x86_64.
-..3. 'xen.efi' is the first EFI app by default.
+It only assume EFI environment.
+It only assume x86_64.
+'xen.efi' is the first EFI app by default.

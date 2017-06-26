@@ -1,0 +1,22 @@
+--- a/xen/arch/x86/Rules.mk.org	2017-06-23 12:28:48.659029534 +0900
++++ b/xen/arch/x86/Rules.mk	2017-06-23 12:29:58.577034948 +0900
+@@ -7,7 +7,8 @@ CFLAGS += -I$(BASEDIR)/include
+ CFLAGS += -I$(BASEDIR)/include/asm-x86/mach-generic
+ CFLAGS += -I$(BASEDIR)/include/asm-x86/mach-default
+ CFLAGS += -DXEN_IMG_OFFSET=$(XEN_IMG_OFFSET)
++CFLAGS += -U__OBJECT_LABEL__
+ CFLAGS += '-D__OBJECT_LABEL__=$(subst /,$$,$(subst -,_,$(subst $(BASEDIR)/,,$(CURDIR))/$@))'
+ 
+ # Prevent floating-point variables from creeping into Xen.
+ CFLAGS += -msoft-float
+--- a/xen/Rules.mk.org	2017-06-23 12:28:55.842030091 +0900
++++ b/xen/Rules.mk	2017-06-23 12:30:17.584036420 +0900
+@@ -49,7 +49,8 @@ endif
+ CFLAGS += -nostdinc -fno-builtin -fno-common
+ CFLAGS += -Werror -Wredundant-decls -Wno-pointer-arith
+ CFLAGS += -pipe -g -D__XEN__ -include $(BASEDIR)/include/xen/config.h
++CFLAGS += -U__OBJECT_FILE__
+ CFLAGS += '-D__OBJECT_FILE__="$@"'
+ 
+ ifneq ($(clang),y)
+ # Clang doesn't understand this command line argument, and doesn't appear to

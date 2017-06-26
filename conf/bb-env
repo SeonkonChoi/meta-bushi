@@ -1,0 +1,10 @@
+if [ -n "$BASH_SOURCE" ]; then
+   TEMPLATECONF="`dirname $BASH_SOURCE`"
+elif [ -n "$ZSH_NAME" ]; then
+   TEMPLATECONF="`dirname $0`"
+else
+   TEMPLATECONF="`pwd`"
+fi
+
+export TEMPLATECONF
+source oe-init-build-env $*

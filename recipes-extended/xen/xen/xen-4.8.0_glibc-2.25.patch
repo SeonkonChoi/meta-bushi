@@ -1,0 +1,24 @@
+--- a/tools/blktap2/control/tap-ctl-allocate.c.org	2017-06-21 18:49:44.858419707 +0900
++++ b/tools/blktap2/control/tap-ctl-allocate.c	2017-06-21 18:51:07.468426103 +0900
+@@ -35,6 +35,8 @@
+ #include <libgen.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#undef makedev
++#include <sys/sysmacros.h>
+ #include <sys/ioctl.h>
+ #include <linux/major.h>
+ 
+--- a/tools/libxl/libxl_internal.h.org	2017-06-21 19:07:16.941501168 +0900
++++ b/tools/libxl/libxl_internal.h	2017-06-21 19:06:06.017495676 +0900
+@@ -43,6 +43,10 @@
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
++#undef makedev
++#undef major
++#undef minor
++#include <sys/sysmacros.h>
+ #include <sys/wait.h>
+ #include <sys/socket.h>
+ #include <sys/file.h>

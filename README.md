@@ -1,22 +1,26 @@
-MACHINE = "intel-corei7-64"
-#MACHINE = "intel-core2-32"
+Download,
+```
+mkdir xen-test
+cd xen-test
+repo init -u https://github.com/SeonkonChoi/manifest-virt.git -b pyro
+repo sync
+repo start work --all
+```
 
-MACHINE_FEATURES_append = " efi pci acpi "
+Build,
+```
+mkdir downloads
+mkdir build
+bash
+cd poky
+source ../meta-bushi/bb-env ../build
+ln -s ../downloads ./
+bitbake xen-image-minimal
+```
 
-DISTRO_FEATURES_append = " largefile systemd ipv6 xen x11 wayland weston opengl opengles1 opengles2 egl "
-
-EFI_PROVIDER = "grub-efi"
-PREFERRED_VERSION_grub-efi = "2.02"
-
-
-#igvtg xen : xengt-stable-4.9
-PREFERRED_VERSION_xen = "4.9+gitAUTOINC+6d3828d156"
-
-#igvtg linux : xengt-stable-4.10
-PREFERRED_VERSION_linux-intel = "4.10%"
-
-#igvtg linux : xengt-stable-4.10
-PREFERRED_VERSION_linux-yocto = "4.10%"
-
-PREFERRED_PROVIDER_virtual/kernel = "linux-yocto"
-
+Make a bootable USB stick,
+```
+sudo sh ../meta-bushi/scripts/mkefidisk.sh /dev/sdX tmp/deploy/image/xen-image-minimal.hddimg /dev/sda
+```
+..* /dev/sdX : the USB stick on your host desktop
+..* /dev/sda : the USB stick on your target machine

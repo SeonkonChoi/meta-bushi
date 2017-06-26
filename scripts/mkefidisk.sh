@@ -465,7 +465,7 @@ if [ -d $ROOTFS_MNT/etc/udev/ ] ; then
 fi
 
 # Add startup.nsh script for automated boot
-echo "fs0:\EFI\BOOT\xen.efi" > $BOOTFS_MNT/startup.nsh
+echo "fs0:\xen.efi" > $BOOTFS_MNT/startup.nsh
 echo "fs0:\EFI\BOOT\bootx64.efi" >> $BOOTFS_MNT/startup.nsh
 
 

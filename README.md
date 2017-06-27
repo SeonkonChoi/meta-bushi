@@ -23,9 +23,9 @@ bitbake xen-image-minimal
 * Make a bootable USB stick,
 ```
 sudo sh ../meta-bushi/scripts/mkefidisk.sh \
-    /dev/sdX \
-    tmp/deploy/images/intel-corei7-64/xen-image-minimal-intel-corei7-64.hddimg 
-    /dev/sda
+  /dev/sdX \
+  tmp/deploy/images/intel-corei7-64/xen-image-minimal-intel-corei7-64.hddimg \
+  /dev/sda
 ```
 **/dev/sdX** : The USB stick device to be written on your host desktop.
 **/dev/sda** : Whatever a **major device node for rootfs** something like /dev/sda or /dev/mmcblk0 on your target machine.
